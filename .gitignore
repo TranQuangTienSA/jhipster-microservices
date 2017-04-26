@@ -5,6 +5,7 @@
 /target/www/**
 /src/test/javascript/coverage/
 /src/test/javascript/PhantomJS*/
+.h2.server.properties
 
 ######################
 # Node
