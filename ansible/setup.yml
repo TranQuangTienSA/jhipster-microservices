@@ -1,0 +1,30 @@
+---
+- name: Start docker compose services
+  hosts: all
+  become: true
+  tasks:
+    - name: Creates directory
+      file: path=/var/docker/docker-compose state=directory
+
+    - name: Creates sub directories
+      file: path=/var/docker/docker-compose/{{ item }} state=directory
+      with_items:
+        - "log-data"
+        - "log-conf"
+        - "central-server-config"
+
+    - name: copy docker-compose config files
+      copy: src=../docker-compose/{{ item }} dest=/var/docker/docker-compose/{{ item }}
+      with_items:
+        - "docker-compose.yml"
+        - "kafka.yml"
+        - "jhipster-console.yml"
+        - "jhipster-registry.yml"
+        - "log-conf/logstash.conf"
+        - "central-server-config/application.yml"
+      notify: docker-compose config
+  handlers:
+    - name: docker-compose config
+      shell: docker-compose config
+      args:
+        chdir: /var/docker/docker-compose/
