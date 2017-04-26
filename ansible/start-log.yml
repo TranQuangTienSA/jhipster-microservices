@@ -1,0 +1,14 @@
+---
+- name: start logging
+  hosts: all
+  become: true
+  tasks:
+    - name: start docker service
+      shell: docker-compose up -d {{ item }}
+      args:
+        chdir: /var/docker/docker-compose/
+      with_items:
+        - "jhipster-elasticsearch"
+        - "jhipster-logstash"
+        - "jhipster-console"
+        - "jhipster-zipkin"
