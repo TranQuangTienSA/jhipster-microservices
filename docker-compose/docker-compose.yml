@@ -1,7 +1,7 @@
 version: '2'
 services:
     authorization-app:
-        image: authorization
+        image: quangtien/authorization
         environment:
             - SPRING_PROFILES_ACTIVE=prod,swagger
             - EUREKA_CLIENT_SERVICE-URL_DEFAULTZONE=http://admin:$${jhipster.registry.password}@jhipster-registry:8761/eureka
@@ -21,9 +21,9 @@ services:
         command: >-
             mysqld --character-set-server=utf8 --collation-server=utf8_general_ci
             --default-time-zone="+07:00" --lower_case_table_names=1 --skip-ssl
-    
+
     gateway-app:
-        image: gateway
+        image: quangtien/gateway
         environment:
             - SPRING_PROFILES_ACTIVE=prod,swagger
             - EUREKA_CLIENT_SERVICE-URL_DEFAULTZONE=http://admin:$${jhipster.registry.password}@jhipster-registry:8761/eureka
@@ -45,9 +45,9 @@ services:
         command: >-
             mysqld --character-set-server=utf8 --collation-server=utf8_general_ci
             --default-time-zone="+07:00" --lower_case_table_names=1 --skip-ssl
-    
+
     uaa-app:
-        image: uaa
+        image: quangtien/uaa
         environment:
             - SPRING_PROFILES_ACTIVE=prod,swagger
             - EUREKA_CLIENT_SERVICE-URL_DEFAULTZONE=http://admin:$${jhipster.registry.password}@jhipster-registry:8761/eureka
@@ -66,7 +66,7 @@ services:
         command: >-
             mysqld --character-set-server=utf8 --collation-server=utf8_general_ci
             --default-time-zone="+07:00" --lower_case_table_names=1 --skip-ssl
-    
+
     zookeeper:
         extends:
             file: kafka.yml

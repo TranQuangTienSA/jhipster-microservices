@@ -1,3 +1,4 @@
 - include: start-core.yml
 - include: start-log.yml
 - include: start-db.yml
+- include: start-app.yml

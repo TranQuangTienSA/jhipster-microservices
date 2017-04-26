@@ -1,0 +1,17 @@
+- name: start apps
+  hosts: all
+  become: true
+  tasks:
+    - name: pull latest images
+      shell: docker-compose pull
+      args:
+        chdir: /var/docker/docker-compose/
+
+    - name: start docker service
+      shell: docker-compose up -d {{ item }}
+      args:
+        chdir: /var/docker/docker-compose/
+      with_items:
+        - "uaa-app"
+        - "authorization-app"
+        - "gateway-app"
