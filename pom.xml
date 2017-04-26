@@ -10,6 +10,8 @@
     <packaging>pom</packaging>
 
     <modules>
-        
+        <module>uaa</module>
+        <module>authorization-service</module>
+        <module>gateway</module>
     </modules>
 </project>
