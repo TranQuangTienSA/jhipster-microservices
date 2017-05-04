@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <!--
+        Added the constraints for entity BusinessUnit.
+    -->
+    <changeSet id="20170504090032-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="bill_to_address_id"
+                                 baseTableName="business_unit"
+                                 constraintName="fk_business_unit_bill_to_address_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="address"/>
+
+        <addForeignKeyConstraint baseColumnNames="ship_to_address_id"
+                                 baseTableName="business_unit"
+                                 constraintName="fk_business_unit_ship_to_address_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="address"/>
+
+        <addForeignKeyConstraint baseColumnNames="parent_id"
+                                 baseTableName="business_unit"
+                                 constraintName="fk_business_unit_parent_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="business_unit"/>
+
+    </changeSet>
+</databaseChangeLog>

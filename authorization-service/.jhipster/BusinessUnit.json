@@ -1,0 +1,81 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "billToAddress",
+            "otherEntityName": "address",
+            "otherEntityField": "street1",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "businessUnit"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "shipToAddress",
+            "otherEntityName": "address",
+            "otherEntityField": "street1",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "businessUnit"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipValidateRules": "required",
+            "relationshipName": "parent",
+            "otherEntityName": "businessUnit",
+            "otherEntityField": "name",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "businessUnit"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "division",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "website",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "mainPhone",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 45
+        },
+        {
+            "fieldName": "otherPhone",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 45
+        },
+        {
+            "fieldName": "fax",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 45
+        },
+        {
+            "fieldName": "email",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170504090032",
+    "entityTableName": "business_unit",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "microserviceName": "authorization"
+}
