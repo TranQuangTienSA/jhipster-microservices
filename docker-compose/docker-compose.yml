@@ -5,13 +5,16 @@ services:
         environment:
             - SPRING_PROFILES_ACTIVE=prod,swagger
             - EUREKA_CLIENT_SERVICE-URL_DEFAULTZONE=http://admin:$${jhipster.registry.password}@jhipster-registry:8761/eureka
+            - EUREKA_INSTANCE_PREFER-IP-ADDRESS=true
+            - EUREKA_INSTANCE_IP-ADDRESS=192.168.31.118
             - SPRING_CLOUD_CONFIG_URI=http://admin:$${jhipster.registry.password}@jhipster-registry:8761/config
-            - >-
-                SPRING_DATASOURCE_URL=jdbc:mariadb://authorization-mariadb:3306/authorization
+            - SPRING_DATASOURCE_URL=jdbc:mariadb://authorization-mariadb:3306/authorization
             - JHIPSTER_SLEEP=10
             - SPRING_CLOUD_STREAM_KAFKA_BINDER_BROKERS=kafka
             - SPRING_CLOUD_STREAM_KAFKA_BINDER_ZK_NODES=zookeeper
             - JHIPSTER_REGISTRY_PASSWORD=admin
+        ports:
+            - 8081:8081
     authorization-mariadb:
         image: mariadb:10.1.17
         environment:
@@ -29,6 +32,8 @@ services:
         environment:
             - SPRING_PROFILES_ACTIVE=prod,swagger
             - EUREKA_CLIENT_SERVICE-URL_DEFAULTZONE=http://admin:$${jhipster.registry.password}@jhipster-registry:8761/eureka
+            - EUREKA_INSTANCE_PREFER-IP-ADDRESS=true
+            - EUREKA_INSTANCE_IP-ADDRESS=192.168.31.118
             - SPRING_CLOUD_CONFIG_URI=http://admin:$${jhipster.registry.password}@jhipster-registry:8761/config
             - SPRING_DATASOURCE_URL=jdbc:mariadb://gateway-mariadb:3306/gateway
             - SPRING_DATA_CASSANDRA_CONTACTPOINTS=gateway-cassandra
@@ -55,6 +60,8 @@ services:
         environment:
             - SPRING_PROFILES_ACTIVE=prod,swagger
             - EUREKA_CLIENT_SERVICE-URL_DEFAULTZONE=http://admin:$${jhipster.registry.password}@jhipster-registry:8761/eureka
+            - EUREKA_INSTANCE_PREFER-IP-ADDRESS=true
+            - EUREKA_INSTANCE_IP-ADDRESS=192.168.31.118
             - SPRING_CLOUD_CONFIG_URI=http://admin:$${jhipster.registry.password}@jhipster-registry:8761/config
             - SPRING_DATASOURCE_URL=jdbc:mariadb://uaa-mariadb:3306/uaa
             - JHIPSTER_SLEEP=10
