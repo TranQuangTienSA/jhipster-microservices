@@ -1,7 +1,0 @@
-jhipster:
-    security:
-        client-authorization:
-            access-token-uri: http://uaa:9999/oauth/token
-            token-service-id: uaa
-            client-id: internal
-            client-secret: internal
