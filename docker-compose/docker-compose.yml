@@ -61,6 +61,8 @@ services:
             - SPRING_CLOUD_STREAM_KAFKA_BINDER_BROKERS=kafka
             - SPRING_CLOUD_STREAM_KAFKA_BINDER_ZK_NODES=zookeeper
             - JHIPSTER_REGISTRY_PASSWORD=admin
+        ports:
+            - 9999:9999
     uaa-mariadb:
         image: mariadb:10.1.17
         environment:
