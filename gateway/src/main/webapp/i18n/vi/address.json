@@ -1,0 +1,31 @@
+{
+    "gatewayApp": {
+        "address" : {
+            "home": {
+                "title": "Addresses",
+                "createLabel": "Thêm mới một Address",
+                "createOrEditLabel": "Thêm mới hoặc cập nhật Address"
+            },
+            "delete": {
+                "question": "Bạn có chắc là muốn xóa Address {{ id }}?"
+            },
+            "detail": {
+                "title": "Address"
+            },
+            "street1": "Street 1",
+            "street2": "Street 2",
+            "street3": "Street 3",
+            "city": "City",
+            "province": "Province",
+            "postalCode": "Postal Code",
+            "country": "Country"
+        }
+    },
+    "authorizationApp": {
+        "address" : {
+            "created": "Một Address mới được tạo với định danh {{ param }}",
+            "updated": "Một Address cập nhật với định danh {{ param }}",
+            "deleted": "Một Address đã xóa với định danh {{ param }}"
+        }
+    }
+}

@@ -1,0 +1,34 @@
+{
+    "gatewayApp": {
+        "businessUnit" : {
+            "home": {
+                "title": "Business Units",
+                "createLabel": "Create a new Business Unit",
+                "createOrEditLabel": "Create or edit a Business Unit"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Business Unit {{ id }}?"
+            },
+            "detail": {
+                "title": "Business Unit"
+            },
+            "name": "Name",
+            "division": "Division",
+            "website": "Website",
+            "mainPhone": "Main Phone",
+            "otherPhone": "Other Phone",
+            "fax": "Fax",
+            "email": "Email",
+            "billToAddress": "Bill To Address",
+            "shipToAddress": "Ship To Address",
+            "parent": "Parent"
+        }
+    },
+    "authorizationApp": {
+        "businessUnit" : {
+            "created": "A new Business Unit is created with identifier {{ param }}",
+            "updated": "A Business Unit is updated with identifier {{ param }}",
+            "deleted": "A Business Unit is deleted with identifier {{ param }}"
+        }
+    }
+}

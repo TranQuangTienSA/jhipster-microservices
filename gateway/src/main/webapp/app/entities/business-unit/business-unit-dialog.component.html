@@ -1,0 +1,117 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myBusinessUnitLabel" jhiTranslate="gatewayApp.businessUnit.home.createOrEditLabel">Create or edit a Business Unit</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!businessUnit.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="businessUnit.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.businessUnit.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                [(ngModel)]="businessUnit.name"
+            required />
+            <div [hidden]="!(editForm.controls.name?.dirty && editForm.controls.name?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.name?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.businessUnit.division" for="field_division">Division</label>
+            <input type="text" class="form-control" name="division" id="field_division"
+                [(ngModel)]="businessUnit.division"
+             />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.businessUnit.website" for="field_website">Website</label>
+            <input type="text" class="form-control" name="website" id="field_website"
+                [(ngModel)]="businessUnit.website"
+             />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.businessUnit.mainPhone" for="field_mainPhone">Main Phone</label>
+            <input type="text" class="form-control" name="mainPhone" id="field_mainPhone"
+                [(ngModel)]="businessUnit.mainPhone"
+            maxlength="45" />
+            <div [hidden]="!(editForm.controls.mainPhone?.dirty && editForm.controls.mainPhone?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.mainPhone?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 45 }">
+                   This field cannot be longer than 45 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.businessUnit.otherPhone" for="field_otherPhone">Other Phone</label>
+            <input type="text" class="form-control" name="otherPhone" id="field_otherPhone"
+                [(ngModel)]="businessUnit.otherPhone"
+            maxlength="45" />
+            <div [hidden]="!(editForm.controls.otherPhone?.dirty && editForm.controls.otherPhone?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.otherPhone?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 45 }">
+                   This field cannot be longer than 45 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.businessUnit.fax" for="field_fax">Fax</label>
+            <input type="text" class="form-control" name="fax" id="field_fax"
+                [(ngModel)]="businessUnit.fax"
+            maxlength="45" />
+            <div [hidden]="!(editForm.controls.fax?.dirty && editForm.controls.fax?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.fax?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 45 }">
+                   This field cannot be longer than 45 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gatewayApp.businessUnit.email" for="field_email">Email</label>
+            <input type="text" class="form-control" name="email" id="field_email"
+                [(ngModel)]="businessUnit.email"
+             />
+        </div>
+
+        <div class="form-group">
+            <label jhiTranslate="gatewayApp.businessUnit.billToAddress" for="field_billToAddress">Bill To Address</label>
+            <select class="form-control" id="field_billToAddress" name="billToAddress" [(ngModel)]="businessUnit.billToAddressId">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="addressOption.id" *ngFor="let addressOption of billtoaddresses; trackBy: trackAddressById">{{addressOption.street1}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label jhiTranslate="gatewayApp.businessUnit.shipToAddress" for="field_shipToAddress">Ship To Address</label>
+            <select class="form-control" id="field_shipToAddress" name="shipToAddress" [(ngModel)]="businessUnit.shipToAddressId">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="addressOption.id" *ngFor="let addressOption of shiptoaddresses; trackBy: trackAddressById">{{addressOption.street1}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label jhiTranslate="gatewayApp.businessUnit.parent" for="field_parent">Parent</label>
+            <select class="form-control" id="field_parent" name="parent" [(ngModel)]="businessUnit.parentId" required>
+                <option [ngValue]="businessUnitOption.id" *ngFor="let businessUnitOption of parents; trackBy: trackBusinessUnitById">{{businessUnitOption.name}}</option>
+            </select>
+        </div>
+        <div [hidden]="!(editForm.controls.parent?.dirty && editForm.controls.parent?.invalid)">
+            <small class="form-text text-danger"
+                [hidden]="!editForm.controls.parent?.errors?.required" jhiTranslate="entity.validation.required">
+                This field is required.
+            </small>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

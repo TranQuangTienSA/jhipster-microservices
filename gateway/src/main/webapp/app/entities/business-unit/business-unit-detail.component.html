@@ -1,0 +1,67 @@
+
+<div *ngIf="businessUnit">
+    <h2><span jhiTranslate="gatewayApp.businessUnit.detail.title">Business Unit</span> {{businessUnit.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.businessUnit.name">Name</span></dt>
+        <dd>
+            <span>{{businessUnit.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.businessUnit.division">Division</span></dt>
+        <dd>
+            <span>{{businessUnit.division}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.businessUnit.website">Website</span></dt>
+        <dd>
+            <span>{{businessUnit.website}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.businessUnit.mainPhone">Main Phone</span></dt>
+        <dd>
+            <span>{{businessUnit.mainPhone}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.businessUnit.otherPhone">Other Phone</span></dt>
+        <dd>
+            <span>{{businessUnit.otherPhone}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.businessUnit.fax">Fax</span></dt>
+        <dd>
+            <span>{{businessUnit.fax}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.businessUnit.email">Email</span></dt>
+        <dd>
+            <span>{{businessUnit.email}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.businessUnit.billToAddress">Bill To Address</span></dt>
+        <dd>
+            <div *ngIf="businessUnit.billToAddressId">
+                <a [routerLink]="['/address', businessUnit.billToAddressId]">{{businessUnit.billToAddressStreet1}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.businessUnit.shipToAddress">Ship To Address</span></dt>
+        <dd>
+            <div *ngIf="businessUnit.shipToAddressId">
+                <a [routerLink]="['/address', businessUnit.shipToAddressId]">{{businessUnit.shipToAddressStreet1}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.businessUnit.parent">Parent</span></dt>
+        <dd>
+            <div *ngIf="businessUnit.parentId">
+                <a [routerLink]="['/business-unit', businessUnit.parentId]">{{businessUnit.parentName}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'business-unit/'+ businessUnit.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>
