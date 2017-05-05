@@ -1,30 +1,33 @@
-entity Address {
-    street1 String,
-    street2 String,
-    street3 String,
-    city String,
-    province String,
-    postalCode String maxlength(45),
-    country String
+// JDL definition for application 'authorization' generated with command 'yo jhipster:export-jdl'
+
+entity Address (address) {
+  street1 String,
+  street2 String,
+  street3 String,
+  city String,
+  province String,
+  postalCode String maxlength(45),
+  country String
+}
+entity BusinessUnit (business_unit) {
+  name String required,
+  division String,
+  website String,
+  mainPhone String maxlength(45),
+  otherPhone String maxlength(45),
+  fax String maxlength(45),
+  email String
 }
 
-entity BusinessUnit {
-    name String required,
-    division String,
-    website String,
-    mainPhone String maxlength(45),
-    otherPhone String maxlength(45),
-    fax String maxlength(45),
-    email String
+relationship ManyToOne {
+  BusinessUnit{billToAddress(street1)} to Address,
+  BusinessUnit{shipToAddress(street1)} to Address,
+  BusinessUnit{parent(name) required} to BusinessUnit
 }
 
-relationship OneToOne {
-    BusinessUnit{billToAddress(street1)} to Address,
-    BusinessUnit{shipToAddress(street1)} to Address,
-    BusinessUnit{parent(name) required} to BusinessUnit
-}
-
+dto Address with mapstruct
+microservice Address with authorization
+dto BusinessUnit with mapstruct
 paginate BusinessUnit with pagination
-dto * with mapstruct
 service BusinessUnit with serviceImpl
-microservice * with authorization
+microservice BusinessUnit with authorization
