@@ -14,7 +14,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "business_unit")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class BusinessUnit implements Serializable {
+public class BusinessUnit extends AbstractAuditingEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -47,17 +47,14 @@ public class BusinessUnit implements Serializable {
     @Column(name = "email")
     private String email;
 
-    @OneToOne
-    @JoinColumn(unique = true)
+    @ManyToOne
     private Address billToAddress;
 
-    @OneToOne
-    @JoinColumn(unique = true)
+    @ManyToOne
     private Address shipToAddress;
 
-    @OneToOne(optional = false)
+    @ManyToOne(optional = false)
     @NotNull
-    @JoinColumn(unique = true)
     private BusinessUnit parent;
 
     public Long getId() {

@@ -2,7 +2,7 @@
     "fluentMethods": true,
     "relationships": [
         {
-            "relationshipType": "one-to-one",
+            "relationshipType": "many-to-one",
             "relationshipName": "billToAddress",
             "otherEntityName": "address",
             "otherEntityField": "street1",
@@ -10,7 +10,7 @@
             "otherEntityRelationshipName": "businessUnit"
         },
         {
-            "relationshipType": "one-to-one",
+            "relationshipType": "many-to-one",
             "relationshipName": "shipToAddress",
             "otherEntityName": "address",
             "otherEntityField": "street1",
@@ -18,7 +18,7 @@
             "otherEntityRelationshipName": "businessUnit"
         },
         {
-            "relationshipType": "one-to-one",
+            "relationshipType": "many-to-one",
             "relationshipValidateRules": "required",
             "relationshipName": "parent",
             "otherEntityName": "businessUnit",
@@ -77,5 +77,6 @@
     "dto": "mapstruct",
     "pagination": "pagination",
     "service": "serviceImpl",
-    "microserviceName": "authorization"
+    "microserviceName": "authorization",
+    "enableEntityAudit": true
 }
