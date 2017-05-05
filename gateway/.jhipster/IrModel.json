@@ -1,0 +1,38 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "model",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "pattern"
+            ],
+            "fieldValidateRulesPattern": "^[a-z0-9._]+$"
+        },
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "state",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "info",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170505101150",
+    "dto": "mapstruct",
+    "service": "serviceImpl",
+    "entityTableName": "ir_model",
+    "pagination": "pager",
+    "microserviceName": "authorization",
+    "searchEngine": false,
+    "enableEntityAudit": true
+}

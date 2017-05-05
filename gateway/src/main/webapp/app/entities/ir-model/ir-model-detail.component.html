@@ -1,0 +1,37 @@
+
+<div *ngIf="irModel">
+    <h2><span jhiTranslate="gatewayApp.irModel.detail.title">Ir Model</span> {{irModel.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.irModel.model">Model</span></dt>
+        <dd>
+            <span>{{irModel.model}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.irModel.name">Name</span></dt>
+        <dd>
+            <span>{{irModel.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.irModel.state">State</span></dt>
+        <dd>
+            <span>{{irModel.state}}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.irModel.info">Info</span></dt>
+        <dd>
+            <span>{{irModel.info}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'ir-model/'+ irModel.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

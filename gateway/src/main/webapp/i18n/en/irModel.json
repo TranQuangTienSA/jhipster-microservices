@@ -1,0 +1,28 @@
+{
+    "gatewayApp": {
+        "irModel" : {
+            "home": {
+                "title": "Ir Models",
+                "createLabel": "Create a new Ir Model",
+                "createOrEditLabel": "Create or edit a Ir Model"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Ir Model {{ id }}?"
+            },
+            "detail": {
+                "title": "Ir Model"
+            },
+            "model": "Model",
+            "name": "Name",
+            "state": "State",
+            "info": "Info"
+        }
+    },
+    "authorizationApp": {
+        "irModel" : {
+            "created": "A new Ir Model is created with identifier {{ param }}",
+            "updated": "A Ir Model is updated with identifier {{ param }}",
+            "deleted": "A Ir Model is deleted with identifier {{ param }}"
+        }
+    }
+}
