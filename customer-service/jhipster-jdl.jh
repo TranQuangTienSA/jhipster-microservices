@@ -1,0 +1,12 @@
+// JDL definition for application 'elasticsearch' generated with command 'yo jhipster:export-jdl'
+
+entity Customer (customer) {
+  name String required,
+  phone String required maxlength(20) pattern("^[0-9]{6,20}$"),
+  email String required,
+  ownerLogin String required maxlength(50)
+}
+
+dto Customer with mapstruct
+paginate Customer with pagination
+service Customer with serviceImpl
