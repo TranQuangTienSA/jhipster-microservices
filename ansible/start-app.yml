@@ -3,14 +3,10 @@
   become: true
   tasks:
     - name: pull latest images
-      shell: docker-compose pull
-      args:
-        chdir: /var/docker/docker-compose/
+      shell: docker-compose pull chdir={{ docker_folder }}
 
     - name: start docker service
-      shell: docker-compose up -d {{ item }}
-      args:
-        chdir: /var/docker/docker-compose/
+      shell: docker-compose up -d {{ item }} chdir={{ docker_folder }}
       with_items:
         - "uaa-app"
         - "authorization-app"

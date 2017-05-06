@@ -4,17 +4,17 @@
   become: true
   tasks:
     - name: Creates directory
-      file: path=/var/docker/docker-compose state=directory
+      file: path={{ docker_folder }} state=directory
 
     - name: Creates sub directories
-      file: path=/var/docker/docker-compose/{{ item }} state=directory
+      file: path={{ docker_folder }}/{{ item }} state=directory
       with_items:
         - "log-data"
         - "log-conf"
         - "central-server-config"
 
     - name: copy docker-compose config files
-      copy: src=../docker-compose/{{ item }} dest=/var/docker/docker-compose/{{ item }}
+      copy: src=../docker-compose/{{ item }} dest={{ docker_folder }}/{{ item }}
       with_items:
         - "docker-compose.yml"
         - "kafka.yml"
@@ -22,9 +22,8 @@
         - "jhipster-registry.yml"
         - "log-conf/logstash.conf"
         - "central-server-config/application.yml"
-      notify: docker-compose config
+      notify: docker-compose-config
+
   handlers:
-    - name: docker-compose config
-      shell: docker-compose config
-      args:
-        chdir: /var/docker/docker-compose/
+    - name: docker-compose-config
+      shell: docker-compose config chdir={{ docker_folder }}/
