@@ -12,6 +12,7 @@
     <modules>
         <module>uaa</module>
         <module>authorization-service</module>
+        <module>customer-service</module>
         <module>gateway</module>
     </modules>
 </project>
