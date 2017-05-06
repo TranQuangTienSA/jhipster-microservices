@@ -27,7 +27,7 @@ export class JhiGatewayComponent implements OnInit {
 
     refresh() {
         this.updatingRoutes = true;
-        this.gatewayRoutesService.findAll().subscribe(gatewayRoutes => {
+        this.gatewayRoutesService.findAll().subscribe((gatewayRoutes) => {
             this.gatewayRoutes = gatewayRoutes;
             this.updatingRoutes = false;
         });
