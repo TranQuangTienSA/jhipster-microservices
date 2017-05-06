@@ -1,0 +1,47 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "net.tinyset.customer",
+      "nativeLanguage": "en"
+    },
+    "jhipsterVersion": "4.3.0",
+    "baseName": "customer",
+    "packageName": "net.tinyset.customer",
+    "packageFolder": "net/tinyset/customer",
+    "serverPort": "8082",
+    "authenticationType": "uaa",
+    "uaaBaseName": "uaa",
+    "hibernateCache": "hazelcast",
+    "clusteredHttpSession": false,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "mariadb",
+    "searchEngine": false,
+    "messageBroker": "kafka",
+    "serviceDiscoveryType": "eureka",
+    "buildTool": "maven",
+    "enableSocialSignIn": false,
+    "jwtSecretKey": "1b4580f85f84ff403f5028cab56e3b62ada60c1d",
+    "enableTranslation": true,
+    "applicationType": "microservice",
+    "testFrameworks": [
+      "cucumber"
+    ],
+    "jhiPrefix": "jhi",
+    "otherModules": [
+      {
+        "name": "generator-jhipster-entity-audit",
+        "version": "2.4.0"
+      }
+    ],
+    "skipClient": true,
+    "skipUserManagement": true,
+    "nativeLanguage": "en",
+    "languages": [
+      "en",
+      "vi"
+    ],
+    "clientPackageManager": "yarn"
+  }
+}
