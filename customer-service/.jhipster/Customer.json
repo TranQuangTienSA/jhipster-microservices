@@ -41,5 +41,7 @@
     "entityTableName": "customer",
     "dto": "mapstruct",
     "pagination": "pagination",
-    "service": "serviceImpl"
+    "microserviceName": "customer",
+    "service": "serviceImpl",
+    "enableEntityAudit": true
 }
