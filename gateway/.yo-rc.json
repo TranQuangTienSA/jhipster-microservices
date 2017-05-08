@@ -3,7 +3,7 @@
     "promptValues": {
       "packageName": "net.tinyset.gateway",
       "nativeLanguage": "en",
-      "microservicePath": "../authorization-service"
+      "microservicePath": "../customer-service"
     },
     "jhipsterVersion": "4.3.0",
     "baseName": "gateway",
