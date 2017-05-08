@@ -1,5 +1,6 @@
 package net.tinyset.customer.service.impl;
 
+import com.querydsl.core.types.Predicate;
 import net.tinyset.customer.service.CustomerService;
 import net.tinyset.customer.domain.Customer;
 import net.tinyset.customer.repository.CustomerRepository;
@@ -24,7 +25,7 @@ import java.util.stream.Collectors;
 public class CustomerServiceImpl implements CustomerService{
 
     private final Logger log = LoggerFactory.getLogger(CustomerServiceImpl.class);
-    
+
     private final CustomerRepository customerRepository;
 
     private final CustomerMapper customerMapper;
@@ -51,7 +52,7 @@ public class CustomerServiceImpl implements CustomerService{
 
     /**
      *  Get all the customers.
-     *  
+     *
      *  @param pageable the pagination information
      *  @return the list of entities
      */
@@ -60,6 +61,14 @@ public class CustomerServiceImpl implements CustomerService{
     public Page<CustomerDTO> findAll(Pageable pageable) {
         log.debug("Request to get all Customers");
         Page<Customer> result = customerRepository.findAll(pageable);
+        return result.map(customer -> customerMapper.customerToCustomerDTO(customer));
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Page<CustomerDTO> findAll(Predicate predicate, Pageable pageable) {
+        log.debug("Request to get all Customers");
+        Page<Customer> result = customerRepository.findAll(predicate, pageable);
         return result.map(customer -> customerMapper.customerToCustomerDTO(customer));
     }
 

@@ -1,6 +1,8 @@
 package net.tinyset.customer.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.querydsl.core.types.Predicate;
+import net.tinyset.customer.domain.Customer;
 import net.tinyset.customer.service.CustomerService;
 import net.tinyset.customer.web.rest.util.HeaderUtil;
 import net.tinyset.customer.web.rest.util.PaginationUtil;
@@ -11,6 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.querydsl.binding.QuerydslPredicate;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,7 +37,7 @@ public class CustomerResource {
     private final Logger log = LoggerFactory.getLogger(CustomerResource.class);
 
     private static final String ENTITY_NAME = "customer";
-        
+
     private final CustomerService customerService;
 
     public CustomerResource(CustomerService customerService) {
@@ -91,9 +94,9 @@ public class CustomerResource {
      */
     @GetMapping("/customers")
     @Timed
-    public ResponseEntity<List<CustomerDTO>> getAllCustomers(@ApiParam Pageable pageable) {
+    public ResponseEntity<List<CustomerDTO>> getAllCustomers(@QuerydslPredicate(root = Customer.class) Predicate predicate, @ApiParam Pageable pageable) {
         log.debug("REST request to get a page of Customers");
-        Page<CustomerDTO> page = customerService.findAll(pageable);
+        Page<CustomerDTO> page = customerService.findAll(predicate, pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/customers");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
