@@ -30,7 +30,6 @@ public class AuthorizationAspect {
 
         Class<?> clazz = entityAuthorize.root();
         predicate = authorizePredicate(predicate, clazz);
-        log.debug("authorized predicate: {}", predicate);
 
         Object[] args = joinPoint.getArgs();
         args[0] = predicate;
