@@ -101,6 +101,15 @@ public class CustomerResource {
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 
+    @GetMapping("/customers/test")
+    @Timed
+    public ResponseEntity<List<CustomerDTO>> getAllCustomers(@ApiParam Pageable pageable) {
+        log.debug("REST request to get a page of Customers");
+        Page<CustomerDTO> page = customerService.findAll(pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/customers");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
     /**
      * GET  /customers/:id : get the "id" customer.
      *

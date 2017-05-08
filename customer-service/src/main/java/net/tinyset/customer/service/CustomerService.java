@@ -4,7 +4,6 @@ import com.querydsl.core.types.Predicate;
 import net.tinyset.customer.service.dto.CustomerDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import java.util.List;
 
 /**
  * Service Interface for managing Customer.
@@ -27,6 +26,13 @@ public interface CustomerService {
      */
     Page<CustomerDTO> findAll(Pageable pageable);
 
+    /**
+     *  Get all the customers.
+     *
+     *  @param predicate
+     *  @param pageable the pagination information
+     *  @return the list of entities
+     */
     Page<CustomerDTO> findAll(Predicate predicate, Pageable pageable);
 
     /**
